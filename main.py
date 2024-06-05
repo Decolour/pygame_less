@@ -14,11 +14,11 @@ pygame.display.set_caption('Игра Тир')
 icon = pygame.image.load('images/pngwing.com.png')
 pygame.display.set_icon(icon)
 
-target_img = pygame.image.load('images/')
+target_img = pygame.image.load('images/icons8-гитлер-50.png')
 target_width = 50
 target_height = 50
 
-target_x =
+target_x = 
 
 while running:
     pass
