@@ -18,7 +18,8 @@ target_img = pygame.image.load('images/icons8-гитлер-50.png')
 target_width = 50
 target_height = 50
 
-target_x = 
+target_x = random.randint(0, SCREEN_WIDTH - target_width)
+target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 
 while running:
     pass
