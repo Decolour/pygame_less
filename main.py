@@ -10,7 +10,7 @@ running = True
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 pygame.display.set_caption('Игра Тир')
-icon = pygame.image.load()
+icon = pygame.image.load(/images/pngwing.com.png)
 
 while running:
     pass
