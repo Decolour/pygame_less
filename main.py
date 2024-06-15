@@ -21,6 +21,15 @@ target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 
 color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 
+# Загрузка изображения прицела
+crosshair_img = pygame.image.load('images/crosshair.png')
+crosshair_img = pygame.transform.scale(crosshair_img, (150, 175)) # Измените размер по необходимости
+crosshair_rect = crosshair_img.get_rect()
+
+# Скрыть системный курсор
+pygame.mouse.set_visible(False)
+
+
 running = True
 while running:
     screen.fill(color)
@@ -33,6 +42,13 @@ while running:
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
     screen.blit(target_img, (target_x, target_y))
+    screen.blit(crosshair_img, crosshair_rect)
+    # Получение позиции мыши
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+
+    # Обновление позиции изображения прицела
+    crosshair_rect.center = (mouse_x, mouse_y)
+
     pygame.display.update()
 
 pygame.quit()
