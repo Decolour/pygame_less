@@ -6,8 +6,8 @@ pygame.init()
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-TARGET_SPEED = 0.5
-MAX_SPEED = 0.8
+TARGET_SPEED = 3.4
+MAX_SPEED = 15.9
 DETECTION_RADIUS = 100
 BLOOD_DISPLAY_TIME = 500  # Время отображения крови в миллисекундах
 
@@ -76,6 +76,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        # Check for mouse button press
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if crosshair_rect.colliderect((target_x, target_y, target_width, target_height)):
+                blood_display = True
+                blood_timer = pygame.time.get_ticks()
+                blood_rect.center = (center_x, center_y)
+
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
     # Calculate the center of the target
@@ -90,12 +98,6 @@ while running:
         # Ensure target stays within screen bounds
         target_x = max(0, min(target_x, SCREEN_WIDTH - target_width))
         target_y = max(0, min(target_y, SCREEN_HEIGHT - target_height))
-
-    # Check if the cursor is on the target
-    if crosshair_rect.colliderect((target_x, target_y, target_width, target_height)):
-        blood_display = True
-        blood_timer = pygame.time.get_ticks()
-        blood_rect.center = (center_x, center_y)
 
     screen.blit(target_img, (target_x, target_y))
 
